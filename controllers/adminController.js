@@ -77,6 +77,16 @@ const adminDashboard = async(req, res)=>{
     }
 }
 
+const loadAddRoom = async(req, res) => {
+
+    try {
+       
+        res.render('addHostel')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 const insertHostel = async(req, res)=>{
 
         
