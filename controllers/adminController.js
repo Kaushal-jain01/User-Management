@@ -77,10 +77,41 @@ const adminDashboard = async(req, res)=>{
     }
 }
 
+const insertHostel = async(req, res)=>{
+
+        
+  try {
+
+    console.log(req.body.name)
+
+    const hostel = new Hostel({
+        name : req.body.name,
+        address : req.body.address,
+        contact : req.body.contact,
+        capacity : req.body.capacity
+        
+    });
+
+        const hostelData = await hostel.save()
+
+        if(hostelData){
+          
+            res.render('addHostel', {message: "Hostel has been added."})
+        }
+        else{
+            res.render('addHostel', {message: "Process failed!"})      
+        }
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 module.exports = {
     loadLogin,
     verifyLogin,
     loadDashboard,
     logout,
-    adminDashboard
+    adminDashboard,
+    insertHostel
 }
