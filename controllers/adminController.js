@@ -1,4 +1,5 @@
-const User = require('../models/userModel') 
+const User = require('../models/userModel')
+const Hostel = require('../models/hostelModel')
 const bcrypt = require('bcrypt')
 
 const loadLogin = async(req, res)=>{
@@ -69,7 +70,8 @@ const adminDashboard = async(req, res)=>{
     try {
 
         const usersData = await User.find({is_admin:0})
-        res.render('dashboard', {users: usersData})
+        const hostelsData = await Hostel.find({})
+        res.render('dashboard', {users: usersData, hostels: hostelsData} )
     } catch (error) {
        console.log(error.message) 
     }
