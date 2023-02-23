@@ -63,6 +63,51 @@
 
 
 <br><br>
+
+<h3>Hostels data:</h3>
+
+
+<table width="70%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Contact</th>
+      <th>Rooms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% hostels.forEach(function(hostel) { %>
+      <tr>
+        <td><%= hostel.name %></td>
+        <td><%= hostel.address %></td>
+        <td><%= hostel.contact %></td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+                <th>Room Number</th>
+                <th>Capacity</th>
+                <th>Price per Night</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% hostel.rooms.forEach(function(room) { %>
+                <tr>
+                  <td><%= room.room_number %></td>
+                  <td><%= room.capacity %></td>
+                  <td><%= room.price_per_night %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+
 <a href="/admin/home">Go to Home</a>
 
 <% include('../layouts/header.ejs') %>
