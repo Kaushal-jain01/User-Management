@@ -27,6 +27,10 @@ admin_route.get('/logout' , auth.isLogin , adminController.logout)
 
 admin_route.get('/dashboard', auth.isLogin , adminController.adminDashboard)
 
+admin_route.get('/addHostel', auth.isLogin, adminController.loadAddRoom)
+
+admin_route.post('/addHostel', auth.isLogin, adminController.insertHostel )
+
 admin_route.get('*', function(req, res){
     res.redirect('/admin')
 })
